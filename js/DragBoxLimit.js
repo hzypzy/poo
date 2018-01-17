@@ -1,0 +1,74 @@
+
+//第二个盒子
+function DragBox2(boxId) {
+	DragBox.call(this,boxId)
+}
+DragBox2.prototype=new DragBox()
+
+	DragBox2.prototype.move=function(x,y) {
+		if(x<0){
+			x=0
+		}
+		if(y<0){
+			y=0
+		}
+		this.ele.css({left:x,top:y})
+	}	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//function DragBoxLimit(boxId) {  
+//	DragBox.call(this, boxId)   // 继承父类中所有属性
+//}
+//
+////DragBoxLimit.prototype = DragBox.prototype // 继承父类所有方法    
+//DragBoxLimit.prototype = new DragBox()   // start, move, stop 都拷贝下来了
+//
+//
+//DragBoxLimit.prototype.move = function(x, y) {  // 重写父类中 的 move 方法
+//	if (x < 0) {  // 如果x小于0
+//		x = 0     // 那么，强制设置它为 0
+//	}
+//	if (y < 0) {  // 如果y小于0
+//		y = 0     // 那么，强制设置它为 0
+//	}
+//	
+////	console.log("this:" + this.constructor)
+//	
+//	// 设置位置
+//	this.ele.css({
+//		left: x,
+//		top: y
+//	})
+//}
