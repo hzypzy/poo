@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	<link rel="stylesheet" type="text/css" href="css/css.css"/>
+	<style>
+		body{
+			width:100%;
+			height:100vh;
+			background:url(img/bg.jpg)no-repeat;
+			background-size:100%;
+		}
+		.fireworm{
+			width: 25px;
+			height:25px;
+			background:url(img/1.jpg)no-repeat;
+			background-size:100%;
+			position: absolute;
+		}
+		.snow{
+			width:50px;
+			height:50px;
+			background:url(img/snow.gif)no-repeat;
+			background-size:100%;
+			position: absolute;
+		}
+	</style>
+	</head>
+	<body>
+		<!--<div id="banner">
+			
+		</div>-->
+	</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js">
+	
+</script>
+<script type="text/javascript">
+//这个是面向过程思想，面向对象在下面
+//$(window).ready(function(){
+//	function Fly(){
+//		this.fly=function(){
+//		for (var i = 0; i < 50; i++) {
+//		var oBox=$('<div class="box"></div>');
+////		console.log(oBox)
+//		$('#banner').append(oBox);
+//		var j=Math.random()*1500;//console.log(j)
+//		var k=Math.random()*300;
+//		oBox.css({left:j,top:k});
+////		oBox=new Fly();
+////		oBox.fly();
+//		(function(oBox){
+//			setInterval(function(){
+//			oBox.animate({left:Math.random()*1500,top:Math.random()*300},1000,'linear')
+//			},1000)
+//			
+//		})(oBox)
+//
+//		}	
+//		}
+//	}
+//	var yhc=new Fly;
+//	yhc.fly();
+//	
+//})
+
+//面向对象-萤火虫
+function Fireworm() {
+	this.ele=$('<div></div>')
+	this.ele.addClass('fireworm')
+	this.ele.appendTo($('body'))
+	this.ele.css({left:Math.random()*($('body').width()-100),
+					  top:Math.random()*($('body').height()-100)})
+}
+	Fireworm.prototype.fly=function() {
+		var self=this
+		this.ele.animate({left:Math.random()*($('body').width()-100),
+					  top:Math.random()*($('body').height()-100)},5000,function() {
+					  	self.fly()
+					  })
+	}
+	
+	
+	for (var i = 0; i < 50; i++) {
+		var chong=new Fireworm();
+		chong.fly();
+	}
+	
+//面向对象 雪花
+function Snow() {
+	this.ele=$('<div></div>')
+	this.ele.addClass('snow')
+	this.ele.appendTo($('body'))
+	this.ele.css({left:Math.random()*($('body').width()-100),top:0})
+}
+	Snow.prototype.luo=function() {
+		var self=this;
+		this.ele.animate({top:$('body').height()-100},5000,function() {
+			self.ele.remove()
+		})
+		
+	}
+
+setInterval(function() {
+	var hua=new Snow()
+	hua.luo();
+},100)
+
+</script>
